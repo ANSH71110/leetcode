@@ -4,7 +4,7 @@
 class Solution:
     def firstBadVersion(self, n: int) -> int:
         d=0
-        l=0
+        l=1
         m=n//2 + 1
         while d!=1:
             if isBadVersion(m):
