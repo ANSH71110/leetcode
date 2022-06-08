@@ -4,11 +4,10 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def oddEvenList(self, z: Optional[ListNode]) -> Optional[ListNode]:
         i=0
         a=ListNode()
         b=ListNode()
-        z=head
         a1=a
         b1=b
         while z is not None:
@@ -21,6 +20,6 @@ class Solution:
                 b=b.next
             z=z.next
             i+=1
-        head=a1.next
+        z=a1.next
         a.next=b1.next
-        return head
+        return z
