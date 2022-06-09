@@ -4,22 +4,15 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def oddEvenList(self, z: Optional[ListNode]) -> Optional[ListNode]:
-        i=0
-        a=ListNode()
-        b=ListNode()
-        a1=a
-        b1=b
-        while z is not None:
-            #print(a1,b1,a,b,i)
-            if i%2==0:                
-                a.next=ListNode(z.val)
-                a=a.next
-            else:             
-                b.next=ListNode(z.val)
-                b=b.next
-            z=z.next
-            i+=1
-        z=a1.next
-        a.next=b1.next
-        return z
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head is None:
+            return head
+        even=ev=head.next
+        od=head
+        while ev and ev.next:
+            od.next=ev.next
+            od=od.next
+            ev.next=od.next
+            ev=ev.next
+        od.next=even
+        return head
