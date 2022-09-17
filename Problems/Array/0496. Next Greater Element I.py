@@ -1,16 +1,18 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        t=[]
+        mapp={}
+        stack=[]
+        ans=[]
+        
+        for i in nums2:
+            while stack and i>stack[-1]:
+                mapp[stack.pop()]=i
+            stack.append(i)
+        
+        while stack:
+            mapp[stack.pop()]=-1
+        
         for i in nums1:
-            j=nums2.index(i) + 1
-            if j==len(nums2) or i==max(nums2):
-                t.append(-1)
-            else:
-                while j<len(nums2):
-                    if nums2[j]>i:
-                        t.append(nums2[j])
-                        break
-                    j+=1
-                if j==len(nums2):
-                    t.append(-1)
-        return t
+            ans.append(mapp[i])
+        
+        return ans
